@@ -1,0 +1,449 @@
+:root {
+    --text-color: #ffffff; /* White */
+    --link-color: #ff7b0f; /* Orange */
+    --background-color: #161616; /* Black */
+    --highlight-color: #c300ff; /* Violet */
+    --lime-color: #00ff9d; /* Lime color for highlight */
+    --font-size-large: 35px;
+    --font-size-medium: 18px;
+    --font-size-small: 16px;
+    --spacing-large: 50px;
+    --spacing-medium: 20px;
+    --spacing-small: 10px;
+    --border-radius: 10px;
+    --box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+/* Button Styles */
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--highlight-color);
+    color: var(--text-color);
+    border-radius: var(--border-radius);
+    text-align: center;
+    font-size: var(--font-size-medium);
+    font-weight: bold;
+    transition: all 0.3s ease;
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: var(--lime-color);
+    color: var(--background-color);
+    transform: translateY(-3px);
+    box-shadow: var(--box-shadow);
+}
+
+.btn i {
+    margin-right: 8px;
+}
+
+/* Rest of your CSS remains the same */
+
+b, strong {
+    color: rgb(0, 255, 157);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth global transition */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+a {
+    color: var(--link-color);
+    text-decoration: none;
+    transition: color 0.2s ease-in-out; /* Smooth link color transition */
+}
+
+a:hover {
+    color: var(--highlight-color); /* Hover color */
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  
+    padding: 0 50px;
+    height: 80px;
+  }
+  
+  nav .left a {
+    color: var(--text-color);
+    font-size: 22px;
+    font-weight: 600;
+  }
+  
+  nav .right a {
+    color: var(--text-color);
+    margin: 0 10px;
+  }
+
+  .logo {
+    color: #fff;
+    font-size: 1.5rem;
+    text-decoration: none;
+    font-weight: bold;
+    text-transform: lowercase; /* Minimalistic small letters */
+    transition: color 0.3s ease;
+  }
+
+  .logo:hover {
+    color: var(--highlight-color);
+    transform: translateX(-5px);
+  }
+
+  .nav-right a:hover {
+    color: var(--highlight-color);
+    transform: translateY(-3px);
+  }
+
+  .nav-right .social-links a {
+    font-size: 24px;
+    color: var(--text-color);
+    margin-right: 18px;
+    padding: 12px;
+    border-radius: 50%;
+    transition: all 0.4s ease;
+    display: inline-block;
+    cursor: pointer;
+  }
+
+  .nav-right .social-links a.github:hover {
+    background-color: #333;
+    transform: scale(1.2); /* Subtle zoom effect */
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+  }
+
+  .nav-right .social-links a.linkedin:hover {
+    background-color: #0077b5;
+    box-shadow: 0 0 20px rgba(0, 119, 181, 0.6); /* Glow effect */
+    transform: scale(1.1);
+    color: #fff;
+  }
+
+  .nav-right .social-links a span {
+    margin-left: 8px;
+  }
+
+  .nav-right .social-links a:hover {
+    transform: translateY(-6px); /* Slight lift effect on hover */
+  }
+
+  /* Responsive styling */
+  @media (max-width: 768px) {
+    .navbar {
+      padding: 1rem;
+    }
+
+    .nav-left {
+      font-size: 16px;
+    }
+
+    .nav-right {
+      flex-direction: column;
+      align-items: flex-start;
+      margin-top: 20px;
+    }
+
+    .nav-right a {
+      margin: 10px 0;
+    }
+
+    .nav-right .social-links a {
+      margin-right: 10px;
+      font-size: 24px;
+    }
+  }
+
+  /* Navbar Animation */
+  @keyframes navbarAnimation {
+    0% {
+      transform: translateY(-100%);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+/* SECTION 1: Hero */
+.hero-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 50px;
+    margin: 50px 0;
+    margin-bottom: 100px;
+    gap: 40px;
+    animation: fadeIn 1.5s ease-in-out; /* Smooth fade-in animation */
+}
+
+.hero-section .text {
+    flex: 5;
+}
+
+.hero-section .text h2 {
+    font-size: 45px;
+    color: var(--highlight-color);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Added shadow for better contrast */
+}
+
+.hero-section .text .links {
+    margin-top: 25px;
+}
+
+.hero-section .text .links a {
+    display: inline-block;
+    padding: 5px 10px;
+    border: 2px solid var(--link-color);
+    border-radius: 5px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease;
+}
+
+.hero-section .text .links a:hover {
+    color: var(--text-color);
+    border: 2px solid var(--highlight-color);
+    transform: translateY(-3px); /* Hover effect for button */
+}
+
+/* Hero Image Hover Effect */
+.hero-section .headshot img {
+    width: 350px;
+    border-radius: 50%;
+    transition: transform 0.5s ease, box-shadow 0.3s ease;
+}
+
+.hero-section .headshot img:hover {
+    transform: scale(1.1); /* Image zoom */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+}
+
+/* SECTION 2: Skills */
+.skills-section {
+    padding: 0 50px;
+    margin-bottom: 100px;
+}
+
+.skills-section h2 {
+    text-align: center;
+    font-size: 35px;
+    color: var(--highlight-color);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Added shadow for better contrast */
+    animation: fadeInUp 1s ease-out;
+}
+
+.skills-section .text {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.skills-section .cells {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.skills-section .cells .cell {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    width: 200px;
+    padding: 10px 20px;
+    margin: 10px;
+    border: 1.5px solid #d3d3d3;
+    border-radius: 10px; /* Curved edges */
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
+    animation: fadeInUp 1s ease-out;
+}
+
+.skills-section .cells .cell:hover {
+    background-color: var(--highlight-color);
+    transform: translateY(-5px); /* Slight lift effect on hover */
+}
+
+.skills-section .cells .cell img {
+    width: 30px;
+    height: 30px;
+    object-fit: contain;
+    border-radius: 2px;
+    transition: transform 0.3s ease;
+}
+
+.skills-section .cells .cell img:hover {
+    transform: scale(1.2); /* Icon zoom effect */
+}
+
+.skills-section .cells .cell span {
+    font-size: 18px;
+    color: var(--text-color);
+}
+/* Highlighted text in Lime */
+.highlight {
+    color: var(--lime-color);
+    font-weight: bold;
+}
+
+/* SECTION 3: Learning */
+.learning-section {
+    padding: 0 50px;
+    margin-bottom: 100px;
+}
+
+.learning-section h2 {
+    font-size: 35px;
+    margin-bottom: 30px;
+    color: var(--highlight-color);
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5); /* Added shadow for better contrast */
+}
+
+.learning-section .group {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    animation: fadeInUp 1s ease-in-out; /* Smooth fade-up animation */
+}
+
+.learning-section .group .person-details {
+    text-align: center;
+    flex: 2;
+}
+
+.learning-section .group .person-details img {
+    width: 200px;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 10px;
+    transition: transform 0.3s ease;
+}
+
+.learning-section .group .person-details img:hover {
+    transform: scale(1.1); /* Image zoom */
+}
+
+.learning-section .group .person-details p {
+    font-weight: 600;
+}
+
+.learning-section .group .person-details p:last-child {
+    font-weight: normal;
+}
+
+.learning-section .group .text {
+    flex: 8;
+}
+
+/* SECTION 4: Contact */
+.contact-section {
+    padding: 0 50px;
+    margin-bottom: 100px;
+}
+
+.contact-section h2 {
+    font-size: 35px;
+    color: var(--highlight-color);
+}
+
+.contact-section .group {
+    display: flex;
+    gap: 50px;
+}
+
+.contact-section .group .text {
+    flex: 3;
+    margin-top: 20px;
+}
+
+.contact-section .group form {
+    flex: 3;
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-section .group form input,
+.contact-section .group form textarea {
+    font-family: 'Poppins', sans-serif;
+    border: 1px solid #d3d3d3;
+    border-radius: 8px;
+    padding: 12px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    color: var(--text-color);
+    background-color: var(--background-color);
+    transition: all 0.3s ease;
+}
+
+.contact-section .group form input:focus,
+.contact-section .group form textarea:focus {
+    border-color: var(--highlight-color);
+    outline: none;
+}
+
+.contact-section .group form button {
+    padding: 15px 25px;
+    background-color: var(--highlight-color);
+    color: var(--background-color);
+    font-size: 18px;
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    transition: background-color 0.3s ease;
+}
+
+.contact-section .group form button:hover {
+    background-color: var(--lime-color);
+    transform: translateY(-2px);
+}
+
+/* Keyframes */
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
