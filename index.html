@@ -1,4 +1,6 @@
+<!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -6,13 +8,523 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;600&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-  <link rel="stylesheet" href="styles.css">
   <title>Nitish Chauhan | Portfolio</title>
+
+  <style>
+    :root {
+      --text-color: #E1E1E1;
+      /* Frosted Silver */
+      --bg-color: #0A0A0A;
+      /* Black */
+      --accent-color: #9D4EDD;
+      /* Violet */
+      --secondary-accent: #FF9F1C;
+      /* Yellowish Orange */
+      --dark-bg: #0F0F0F;
+      /* Dark shade for sections */
+      --light-bg: #151515;
+      /* Lighter shade for elements */
+      --border-color: #2A2A2A;
+      /* Subtle borders */
+
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 2rem;
+      --spacing-lg: 4rem;
+
+      --fs-sm: 0.875rem;
+      --fs-base: 1rem;
+      --fs-md: 1.25rem;
+      --fs-lg: 1.75rem;
+      --fs-xl: 2.5rem;
+      --fs-xxl: 3.5rem;
+    }
+
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      transition: all 0.3s ease;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'JetBrains Mono', monospace;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    /* Typography */
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-weight: 600;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: var(--fs-xl);
+      margin-bottom: var(--spacing-md);
+      position: relative;
+      display: inline-block;
+    }
+
+    h2::after {
+      content: "";
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 60px;
+      height: 3px;
+      background-color: var(--accent-color);
+      transition: width 0.3s ease;
+    }
+
+    h2:hover::after {
+      width: 100%;
+    }
+
+    h3 {
+      font-size: var(--fs-lg);
+      margin-bottom: var(--spacing-sm);
+      color: var(--secondary-accent);
+    }
+
+    p {
+      margin-bottom: var(--spacing-sm);
+    }
+
+    a {
+      color: var(--text-color);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: var(--accent-color);
+    }
+
+    /* Container */
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    /* Navbar */
+    .navbar {
+      padding: var(--spacing-md) 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: rgba(10, 10, 10, 0.9);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .navbar .container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: var(--fs-md);
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    .nav-right {
+      display: flex;
+      gap: var(--spacing-md);
+    }
+
+    .nav-right a {
+      font-size: var(--fs-md);
+      transition: transform 0.3s ease, color 0.3s ease;
+    }
+
+    .nav-right a:hover {
+      transform: translateY(-3px);
+      color: var(--secondary-accent);
+    }
+
+    /* Sections */
+    section {
+      padding: var(--spacing-lg) 0;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    /* Hero Section */
+    .hero-section {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-lg);
+      min-height: calc(100vh - 80px);
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .hero-section .text {
+      flex: 5;
+    }
+
+    .hero-section h2 {
+      font-size: var(--fs-xxl);
+      margin-bottom: var(--spacing-md);
+      color: var(--accent-color);
+    }
+
+    .hero-section p {
+      font-size: var(--fs-md);
+      margin-bottom: var(--spacing-md);
+      max-width: 650px;
+    }
+
+    .hero-section .links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      margin-top: var(--spacing-md);
+    }
+
+    .hero-section .links a {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-xs) var(--spacing-sm);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+
+    .hero-section .links a:hover {
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+      border-color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+
+    .hero-section .headshot {
+      flex: 3;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-section .headshot img {
+      max-width: 300px;
+      width: 100%;
+      height: auto;
+      border-radius: 50%;
+      border: 3px solid var(--accent-color);
+      box-shadow: 0 8px 30px rgba(157, 78, 221, 0.3);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .hero-section .headshot img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 40px rgba(157, 78, 221, 0.5);
+    }
+
+    /* Skills Section */
+    .skills-section {
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .skills-section .text {
+      margin-bottom: var(--spacing-md);
+    }
+
+    .skills-section hr {
+      border: none;
+      border-top: 1px solid var(--border-color);
+      margin: var(--spacing-md) 0;
+    }
+
+    .cells {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--spacing-md);
+      margin-top: var(--spacing-lg);
+    }
+
+    .cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--spacing-sm);
+      padding: var(--spacing-md);
+      background-color: var(--light-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      width: 150px;
+      transition: all 0.3s ease;
+    }
+
+    .cell:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 10px 30px rgba(157, 78, 221, 0.2);
+      border-color: var(--accent-color);
+    }
+
+    .cell img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      transition: transform 0.3s ease;
+    }
+
+    .cell:hover img {
+      transform: scale(1.2);
+    }
+
+    .cell span {
+      font-size: var(--fs-base);
+      font-weight: 600;
+    }
+
+    /* Learning Section */
+    .learning-section {
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .learning-section .group {
+      display: flex;
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .learning-section .person-details {
+      flex: 1;
+      text-align: center;
+    }
+
+    .learning-section .person-details img {
+      width: 180px;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: var(--spacing-sm);
+      border: 3px solid var(--accent-color);
+      transition: transform 0.3s ease;
+    }
+
+    .learning-section .person-details img:hover {
+      transform: scale(1.1);
+    }
+
+    .learning-section .text {
+      flex: 3;
+    }
+
+    .learning-section hr {
+      border: none;
+      border-top: 1px solid var(--border-color);
+      margin: var(--spacing-md) 0;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: var(--spacing-sm) var(--spacing-md);
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn:hover {
+      background-color: var(--secondary-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(255, 159, 28, 0.3);
+    }
+
+    /* Movie Review */
+    .movie-review h2 {
+      color: var(--secondary-accent);
+    }
+
+    .movie-review h3 {
+      color: var(--accent-color);
+      margin-top: var(--spacing-md);
+    }
+
+    .movie-review ul {
+      list-style-position: inside;
+      margin: var(--spacing-sm) 0 var(--spacing-md);
+    }
+
+    .movie-review li {
+      margin-bottom: var(--spacing-xs);
+    }
+
+    /* Contact Section */
+    .contact-section {
+      padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .contact-section .group {
+      display: flex;
+      gap: var(--spacing-lg);
+    }
+
+    .contact-section .text {
+      flex: 1;
+    }
+
+    .contact-section form {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .contact-section label {
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .contact-section input,
+    .contact-section textarea {
+      padding: var(--spacing-sm);
+      margin-bottom: var(--spacing-md);
+      background-color: var(--light-bg);
+      border: 1px solid var(--border-color);
+      border-radius: 4px;
+      color: var(--text-color);
+      font-family: 'JetBrains Mono', monospace;
+      resize: vertical;
+      transition: border-color 0.3s ease;
+    }
+
+    .contact-section input:focus,
+    .contact-section textarea:focus {
+      outline: none;
+      border-color: var(--accent-color);
+    }
+
+    .contact-section button {
+      padding: var(--spacing-sm) var(--spacing-md);
+      background-color: var(--accent-color);
+      color: var(--bg-color);
+      border: none;
+      border-radius: 4px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .contact-section button:hover {
+      background-color: var(--secondary-accent);
+      transform: translateY(-3px);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      :root {
+        --fs-xxl: 2.5rem;
+        --fs-xl: 2rem;
+        --fs-lg: 1.5rem;
+      }
+
+      .container {
+        width: 95%;
+        padding: 0 var(--spacing-sm);
+      }
+
+      .hero-section {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: var(--spacing-md);
+      }
+
+      .hero-section .links {
+        justify-content: center;
+      }
+
+      .hero-section h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+      }
+
+      .skills-section .cells {
+        gap: var(--spacing-sm);
+      }
+
+      .learning-section .group {
+        flex-direction: column;
+      }
+
+      .contact-section .group {
+        flex-direction: column;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    section {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    section.visible {
+      animation: fadeIn 1s ease-out forwards;
+    }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--dark-bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--accent-color);
+      border-radius: 4px;
+    }
+
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--secondary-accent);
+    }
+  </style>
 </head>
+
 <body>
   <!-- NAVBAR -->
   <header>
@@ -20,9 +532,9 @@
       <div class="container">
         <!-- Left Side: Logo/Name -->
         <div class="nav-left">
-          <a href="https://nitish9302.github.io/portfolio/" class="logo">Nitish Chauhan</a>
+          <a href="https://nitish9302.github.io/portfolio/" class="logo">nitish.dev</a>
         </div>
-  
+
         <!-- Right Side: Social Icons -->
         <div class="nav-right">
           <a href="http://github.com/nitish9302" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
@@ -41,15 +553,13 @@
 
   <main>
     <!-- SECTION 1: Hero -->
-    <section class="hero-section">
+    <section class="hero-section fade-in">
       <div class="text">
-        <h2>Hi, I'm Nitish Chauhan 👋</h2>
-        <p>🚀 Computer Science Engineering Student | Full Stack Web Developer | Python & JavaScript Enthusiast <br><br>
-        <b>Detailed & Engaging : 🎓 B.Tech in Computer Science – Graphic Era Hill University</b><br><br>
-        💻 Computer Science student passionate about Full Stack Web Development, Python, and Machine Learning. Building impactful projects and constantly learning new technologies. <br><br>
-        <b>Minimalist & Clean:</b>👨‍💻 Full Stack Developer | Python & JavaScript | AI & ML Enthusiast<br><br>
-        <b>Hobbies & Interests:</b>
-        🎮 Gaming | 🎵 Music | 🔍 Exploring Tech</p>
+        <h2>Hi, I'm Nitish Chauhan</h2>
+        <p>I'm a Computer Science Engineering Student and Full Stack Developer passionate about creating efficient web
+          solutions with Python and JavaScript.</p>
+        <p>Currently pursuing B.Tech in Computer Science at Graphic Era Hill University, focused on Web Development,
+          Python, and Machine Learning.</p>
         <div class="links">
           <a href="#skills">
             <i class="fa-solid fa-code"></i>
@@ -57,7 +567,7 @@
           </a>
           <a href="#learning">
             <i class="fa-solid fa-pen"></i>
-            <span>Learnings</span>
+            <span>Learning</span>
           </a>
           <a href="#contact">
             <i class="fa-solid fa-envelope"></i>
@@ -69,14 +579,23 @@
         <img src="nitish's headshot.jpg" alt="Nitish Chauhan Headshot" loading="lazy">
       </div>
     </section>
+
     <!-- SECTION 2: Skills -->
     <section id="skills" class="skills-section">
       <h2>Skills</h2>
-      <p class="text">I have a strong foundation in <b>Python, C, and C++</b>, along with experience in <b>Full-stack web development using Python, Django, React, Node.js, Express, and PostgreSQL</b>. My technical skills also include <b>Machine Learning, API integration, and Linux.</b></p>
+      <div class="text">
+        <p>I have a strong foundation in <strong>Python, C, and C++</strong>, along with experience in
+          <strong>Full-stack web development using Python, Django, React, Node.js, Express, and PostgreSQL</strong>. My
+          technical skills also include <strong>Machine Learning, API integration, and Linux.</strong>
+        </p>
+      </div>
       <hr>
       <div class="text">
-        <b>⛅ Weather App</b><br> Built a full-stack application that fetches real-time weather data using an API and presents it with a clean UI. <br>
-        <b>❤️ Heart Disease Prediction</b><br> Developed a Machine Learning model that predicts heart disease risk based on patient data, using Python, Pandas, and Scikit-learn.
+        <h3>Projects</h3>
+        <p><strong>⛅ Weather App</strong><br> Built a full-stack application that fetches real-time weather data using
+          an API and presents it with a clean UI.</p>
+        <p><strong>❤️ Heart Disease Prediction</strong><br> Developed a Machine Learning model that predicts heart
+          disease risk based on patient data, using Python, Pandas, and Scikit-learn.</p>
       </div>
       <div class="cells">
         <div class="cell">
@@ -112,12 +631,11 @@
           <span>PostgreSQL</span>
         </div>
       </div>
-      <hr>
     </section>
 
     <!-- SECTION 3: Learning -->
     <section id="learning" class="learning-section">
-      <h2>Learnings</h2>
+      <h2>Learning Journey</h2>
       <div class="group">
         <div class="person-details">
           <img src="whimpy-kid.jpg" alt="Wimpy Kid">
@@ -125,123 +643,173 @@
           <p>But I try to improve day by day</p>
         </div>
         <div class="text">
-          <p>Self introduction session has been a valuable learning. Our teacher emphasized the importance of maintaining eye contact, speaking clearly, and presenting myself with confidence. The structured approach to self-introduction helped me refine my communication skills.</p>
-          <p>I learned to start with my name, schooling, and current education, ensuring a smooth introduction. The next key aspect was elaborating on my projects, where I explained the technologies used, challenges faced, and the impact of my work. This taught me how to highlight my technical skills effectively.</p>
-          <p>Discussing my achievements and certifications helped me recognize their significance in shaping my career. Additionally, structuring my goals—focusing on becoming a skilled software engineer in a reputed company—allowed me to express my aspirations clearly.</p>
-          <p>Lastly, concluding with a brief mention of my family background added a personal touch, making my introduction well-rounded and engaging.</p>
-        </div>
-        <div class="text">
-          <h3>SELF-INTRODUCTION</h3>
-          <p>I am pursuing a Bachelor of Technology in Computer Science at Graphic Era Hill University, aiming to become a Full Stack Web Developer at a top multinational company. I am passionate about technology’s ability to solve real-world problems and drive innovation.</p>
-          <p>I have a strong foundation in Python, C, and C++. During my studies, I worked on projects like a weather application and a heart disease prediction model using Machine Learning. I have also completed courses on Linux and data structures from Udemy to strengthen my technical skills.</p>
-          <p>While I haven’t done an internship yet, I am actively learning and seeking job opportunities to apply my knowledge. I completed my schooling at Kendriya Vidyalaya ITBP Gauchar in Chamoli and take pride in my progress so far.</p>
-          <p>In my free time, I enjoy playing video games and listening to music. My family is my biggest support—my mother is a government teacher, and my father is an architect in a private company.</p>
-          <p>Thank you for taking the time to learn about me!</p><br>
-          <!-- Button for Introduction Video -->
-          <a href="https://drive.google.com/file/d/19b1lif0Z04lQWE7OHlvUX56QpZ0Z516C/view?usp=drivesdk" target="_blank" class="btn">
-            <i class="fa-solid fa-download"></i>
-            <span>Introduction Video Here</span>
+          <h3>Self-Introduction</h3>
+          <p>Self introduction session has been a valuable learning. Our teacher emphasized the importance of
+            maintaining eye contact, speaking clearly, and presenting myself with confidence. The structured approach to
+            self-introduction helped me refine my communication skills.</p>
+          <p>I learned to start with my name, schooling, and current education, ensuring a smooth introduction. The next
+            key aspect was elaborating on my projects, where I explained the technologies used, challenges faced, and
+            the impact of my work. This taught me how to highlight my technical skills effectively.</p>
+          <p>Discussing my achievements and certifications helped me recognize their significance in shaping my career.
+            Additionally, structuring my goals—focusing on becoming a skilled software engineer in a reputed
+            company—allowed me to express my aspirations clearly.</p>
+          <a href="https://drive.google.com/file/d/19b1lif0Z04lQWE7OHlvUX56QpZ0Z516C/view?usp=drivesdk" target="_blank"
+            class="btn">
+            <i class="fa-solid fa-play"></i>
+            <span>Watch Introduction Video</span>
           </a>
         </div>
       </div>
-      <br>
-      <hr><br>
-      <div class="text">
-        <h3>EXTEMPORE</h3>
-        <p>In our recent class, our teacher emphasized the importance of confidence, clarity, and structured thinking while delivering an extempore speech. Since extempore requires speaking on the spot, I learned that quick thinking and organizing ideas efficiently are crucial.</p>
-        <p>Our teacher highlighted the P-R-E-P method (Point, Reason, Example, and Point) to structure responses logically. Starting with a clear introduction, supporting the topic with relevant points, and concluding strongly helps make an impact.</p>
-        <p>Another key learning was time management—balancing content within the given time limit without rushing or pausing too much. Voice modulation, eye contact, and hand gestures were also stressed to engage the audience.</p>
-        <p>Practicing regularly and staying informed about current affairs were additional tips that will help in improving my extempore speaking skills.</p>
-      </div>
-      <br><br>
+
       <hr>
-      <br>
-      <h3>Resume Building</h3>
-      <div>
-        In our recent class, the teacher emphasized the importance of creating a clear, well-structured, and professional resume to make a strong first impression. I learned that a resume should be concise, highlight key achievements, and be tailored to the job role.The teacher stressed the importance of starting with a strong summary, followed by sections like education, technical skills, projects, internships, and certifications. Listing projects in detail, including the technologies used and their impact, helps showcase practical experience.Another key takeaway was to use action-oriented words while describing roles and achievements to make the resume more impactful. The teacher also highlighted the significance of proper formatting, consistency, and avoiding unnecessary details.Additionally, customizing the resume for each job, keeping it updated, and ensuring error-free content were crucial tips that will help in creating a standout resume. <br><br>
-        <a href="https://drive.google.com/file/d/1QIHe0Wb_CQWN0BU_CbRv_3DU7SvY9QIp/view?usp=drive_link" target="_blank" class="btn">
+
+      <div class="text">
+        <h3>Extempore Speaking</h3>
+        <p>In our recent class, our teacher emphasized the importance of confidence, clarity, and structured thinking
+          while delivering an extempore speech. Since extempore requires speaking on the spot, I learned that quick
+          thinking and organizing ideas efficiently are crucial.</p>
+        <p>Our teacher highlighted the P-R-E-P method (Point, Reason, Example, and Point) to structure responses
+          logically. Starting with a clear introduction, supporting the topic with relevant points, and concluding
+          strongly helps make an impact.</p>
+        <p>Another key learning was time management—balancing content within the given time limit without rushing or
+          pausing too much. Voice modulation, eye contact, and hand gestures were also stressed to engage the audience.
+        </p>
+      </div>
+
+      <hr>
+
+      <div class="text">
+        <h3>Resume Building</h3>
+        <p>In our recent class, the teacher emphasized the importance of creating a clear, well-structured, and
+          professional resume to make a strong first impression. I learned that a resume should be concise, highlight
+          key achievements, and be tailored to the job role.</p>
+        <p>The teacher stressed the importance of starting with a strong summary, followed by sections like education,
+          technical skills, projects, internships, and certifications. Listing projects in detail, including the
+          technologies used and their impact, helps showcase practical experience.</p>
+        <a href="https://drive.google.com/file/d/1QIHe0Wb_CQWN0BU_CbRv_3DU7SvY9QIp/view?usp=drive_link" target="_blank"
+          class="btn">
           <i class="fa-solid fa-download"></i>
-          <span>Resume Here</span>
+          <span>View Resume</span>
         </a>
-      </div><br><hr><br>
+      </div>
+
+      <hr>
+
       <div class="movie-review">
-        <h2 style="color: rgb(43, 255, 0);">Movie Review - The Shawshank Redemption</h2>
+        <h2>Movie Review - The Shawshank Redemption</h2>
         <div class="personal-review">
-          <h3 style="color: aqua;">A Testament to the Unbreakable Spirit</h3>
-          <p>
-            "The Shawshank Redemption" isn't just a movie; it's a profound exploration of the human capacity for endurance and the enduring power of hope. Andy Dufresne's story, a man unjustly imprisoned, is a masterclass in quiet defiance and unwavering resolve.
-          </p>
-          <p>
-            From the moment Andy steps into the grim confines of Shawshank, you're drawn into his world. What strikes you most is his inner strength. He doesn't bellow or rage against his fate; instead, he methodically navigates the harsh realities of prison life, finding ways to preserve his dignity and, more importantly, his hope.
-          </p>
-          <p>
-            What truly resonates is the film's depiction of institutionalization. It's a stark reminder of how environments can shape, and sometimes break, the human spirit. Yet, Andy's presence acts as a counterforce, a reminder that even within the most oppressive settings, one can cultivate a sense of self.
-          </p>
-          <p>
-            His relationship with Red is the heart of the film. It's a friendship forged in hardship, built on mutual respect and understanding. Their bond illustrates the vital role of human connection in maintaining sanity and hope.
-          </p>
+          <h3>A Testament to the Unbreakable Spirit</h3>
+          <p>"The Shawshank Redemption" isn't just a movie; it's a profound exploration of the human capacity for
+            endurance and the enduring power of hope. Andy Dufresne's story, a man unjustly imprisoned, is a masterclass
+            in quiet defiance and unwavering resolve.</p>
+          <p>From the moment Andy steps into the grim confines of Shawshank, you're drawn into his world. What strikes
+            you most is his inner strength. He doesn't bellow or rage against his fate; instead, he methodically
+            navigates the harsh realities of prison life, finding ways to preserve his dignity and, more importantly,
+            his hope.</p>
         </div>
-        <br>
-        <div>
-          <h3 style="color: aqua;">A Moment of Profound Insight:</h3>
-          <p>
-            "Remember, Red, hope is a good thing, maybe the best of things, and no good thing ever dies." – Andy Dufresne
-          </p>
-          <p>
-            This dialogue isn't just a platitude; it's a declaration of Andy's philosophy. It speaks to the fundamental human need for something to believe in, something to strive for, even when all seems lost.
-          </p>
-        </div>
-        <br>
-        <div>
-          <h3 style="color: aqua;">Key Lessons Extracted:</h3>
-          <ul>
-            <li><strong>The Power of Quiet Resilience:</strong> Andy's strength isn't loud or aggressive; it's a steady, unwavering force that slowly chips away at the walls of despair.</li>
-            <li><strong>The Importance of Inner Sanctuary:</strong> Even in a place designed to strip away individuality, Andy finds ways to maintain his sense of self.</li>
-            <li><strong>The Transformative Power of Friendship:</strong> Red and Andy's relationship highlights how genuine connection can sustain us through the darkest times.</li>
-            <li><strong>The Long Game:</strong> Andy's patient and meticulous planning underscores that achieving significant goals often requires time and unwavering focus.</li>
-          </ul>
-        </div>
-        <br>
-        <div class="classroom-parallels">
-          <h3 style="color: aqua;">Classroom Parallels:</h3>
-          <p>
-            Our discussions on emotional intelligence and strategic thinking find perfect parallels in "The Shawshank Redemption." Andy's ability to remain composed under pressure, to analyze situations, and to act with calculated precision are lessons that extend far beyond the prison walls.
-          </p>
-        </div>
-        <br>
-        <div class="final-reflection">
-          <h3 style="color: aqua;">Final Reflection:</h3>
-          <p>
-            "The Shawshank Redemption" is a timeless narrative that reminds us that even when confined by external circumstances, the human spirit can remain free. It's a story that inspires us to cultivate hope, nurture friendships, and never lose sight of the possibility of redemption. It’s a must watch for anyone who needs a reminder that the human spirit is indeed unbreakable.
-          </p>
-        </div><br><br>
-        <hr>
+
+        <h3>A Moment of Profound Insight:</h3>
+        <p>"Remember, Red, hope is a good thing, maybe the best of things, and no good thing ever dies." – Andy Dufresne
+        </p>
+
+        <h3>Key Lessons Extracted:</h3>
+        <ul>
+          <li><strong>The Power of Quiet Resilience:</strong> Andy's strength isn't loud or aggressive; it's a steady,
+            unwavering force that slowly chips away at the walls of despair.</li>
+          <li><strong>The Importance of Inner Sanctuary:</strong> Even in a place designed to strip away individuality,
+            Andy finds ways to maintain his sense of self.</li>
+          <li><strong>The Transformative Power of Friendship:</strong> Red and Andy's relationship highlights how
+            genuine connection can sustain us through the darkest times.</li>
+          <li><strong>The Long Game:</strong> Andy's patient and meticulous planning underscores that achieving
+            significant goals often requires time and unwavering focus.</li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <div class="text">
+        <h3>Public Speaking</h3>
+        <p><strong>What is Public Speaking?</strong><br>
+          Public speaking is the act of delivering a speech or presentation to an audience. It's not just about talking
+          in front of people; it's about communicating your ideas clearly, confidently, and effectively.</p>
+
+        <p><strong>Why Public Speaking Matters:</strong></p>
+        <ul>
+          <li><strong>Boosts Confidence:</strong> The more you speak in front of others, the more confident you become.
+          </li>
+          <li><strong>Improves Communication Skills:</strong> Helps you articulate thoughts better and listen actively.
+          </li>
+          <li><strong>Enhances Career Growth:</strong> Employers value individuals who can present ideas persuasively.
+          </li>
+        </ul>
+      </div>
+
+      <hr>
+
+      <div class="text">
+        <h3>Essay Writing</h3>
+        <p>Essay writing has taught me the importance of structure, research, and clear articulation of thoughts. A
+          well-written essay follows a logical flow, supported by credible evidence and examples.</p>
+
+        <h4>Essay: Blockchain Technology</h4>
+        <p>Blockchain is a revolutionary technology that has transformed how we store and transfer information securely.
+          Initially introduced as the foundation of cryptocurrencies like Bitcoin, blockchain has now expanded its reach
+          into various industries such as banking, healthcare, supply chain, and more.</p>
+        <p>At its core, blockchain is a decentralized digital ledger that records transactions across multiple computers
+          in a way that prevents tampering and fraud. Each block contains a list of transactions and once added to the
+          chain, altering past blocks becomes extremely difficult.</p>
       </div>
     </section>
+
     <!-- SECTION 4: Contact -->
     <section id="contact" class="contact-section">
       <h2>Contact</h2>
       <div class="group">
         <div class="text">
-          Do tell me where to improve, I'm always ready to learn something valuable and knowledgefull. <br><br>
-          <!-- Button for Resume -->
-          📍 Location: India <br><br> 💬 Let's Connect! Whether you have a project idea, a job opportunity, or just want to chat about tech, feel free to reach out!
+          <p>I'm always looking to improve and learn something valuable. Feel free to reach out with feedback,
+            opportunities, or just to connect!</p>
+          <p><i class="fa-solid fa-location-dot"></i> Location: India</p>
+          <p><i class="fa-solid fa-comment"></i> Let's Connect! Whether you have a project idea, a job opportunity, or
+            just want to chat about tech, feel free to reach out!</p>
         </div>
 
         <form>
           <label for="name">Name</label>
-          <input type="text" id="name">
+          <input type="text" id="name" placeholder="Your name">
 
           <label for="email">Email</label>
-          <input type="email" id="email">
+          <input type="email" id="email" placeholder="Your email">
 
           <label for="message">Message</label>
-          <textarea id="message" cols="30" rows="10"></textarea>
+          <textarea id="message" rows="5" placeholder="Your message"></textarea>
 
           <button type="submit">Send Message</button>
         </form>
       </div>
     </section>
   </main>
+
+  <script>
+    // Fade in sections when they come into view
+    const sections = document.querySelectorAll('section');
+
+    const fadeInOnScroll = () => {
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+
+        if (sectionTop < windowHeight * 0.85) {
+          section.classList.add('visible');
+        }
+      });
+    };
+
+    // Initial check
+    fadeInOnScroll();
+
+    // Add event listener
+    window.addEventListener('scroll', fadeInOnScroll);
+  </script>
 </body>
+
 </html>
