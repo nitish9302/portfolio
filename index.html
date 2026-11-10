@@ -305,7 +305,6 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
 .schematic { margin: 0; padding: 20px 20px 0; overflow-x: auto; border-bottom: 1px solid var(--hair); }
 .sch { display: block; width: 100%; height: auto; min-width: 700px; }
 .pan { display: none; position: sticky; left: 0; margin-top: 10px; font: 600 11px/1 var(--cond); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
-.detail-lower { display: grid; grid-template-columns: minmax(0, 1.3fr) minmax(0, 1fr); gap: 0; }
 
 /* Schematic Components - Mathematically Sized & Vertically Centered */
 .sch text { user-select: none; -webkit-user-select: none; }
@@ -327,16 +326,17 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
   to { stroke-dashoffset: -20; }
 }
 
-.notes { padding: 20px 24px 24px 20px; }
-.notes .label { display: block; margin-bottom: 12px; }
+.notes { padding: 22px 26px 26px; }
+.notes .label { display: block; margin-bottom: 14px; }
 .notes ol { margin: 0; padding: 0; list-style: none; counter-reset: n; }
-.notes li { counter-increment: n; position: relative; padding-left: 34px; margin-bottom: 14px; font-size: 15.5px; line-height: 1.55; }
+.notes li { counter-increment: n; position: relative; padding-left: 36px; margin-bottom: 16px; font-size: 15.5px; line-height: 1.6; }
+.notes li:last-child { margin-bottom: 0; }
 .notes li::before { content: counter(n) "."; position: absolute; left: 0; top: 1px; font: 700 13px/1.6 var(--mono); color: var(--accent-text); }
 
 /* Technical Deep Dive Panel */
-.deep-dive { margin-top: 18px; padding: 14px 18px; background: var(--code-bg); border: 1px solid var(--hair); font: 400 12.5px/1.65 var(--mono); border-left: 3px solid var(--accent); border-radius: 4px; }
-.deep-dive-title { display: block; font: 700 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 8px; }
-.deep-dive code { display: block; overflow-x: auto; white-space: pre; color: var(--ink); font-family: var(--mono); }
+.deep-dive { margin: 0; padding: 18px 24px 20px; background: var(--code-bg); border-top: 0; border-left: 3px solid var(--accent); border-right: 0; border-bottom: 1px solid var(--hair); font: 400 12.5px/1.65 var(--mono); }
+.deep-dive-title { display: block; font: 700 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 10px; }
+.deep-dive code { display: block; overflow-x: auto; white-space: pre; color: var(--ink); font-family: var(--mono); font-size: 12.5px; line-height: 1.65; }
 
 /* ── Drawing Index Table (Sheet 4) ── */
 .idx td.dwg { width: 76px; font: 700 13px/1.9 var(--mono); color: var(--ink-2); white-space: nowrap; }
@@ -509,7 +509,6 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
   .ga { grid-template-columns: 1fr; }
   .ga-intro, .ga-bom, .ga .fig { grid-column: 1; grid-row: auto; }
   .fig { max-width: 720px; }
-  .detail-lower { grid-template-columns: 1fr; }
   .tb-wrap { grid-template-columns: 1fr; }
 }
 
@@ -539,7 +538,6 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
   .tb .half, .tb .third { grid-column: span 4; }
   .tb .sixth { grid-column: span 2; }
   .modal-box { padding: 20px; }
-  .detail-lower { grid-template-columns: 1fr; }
   .dossier-stats { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -609,8 +607,8 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
     </div>
 
     <div class="ga-intro">
-      <p class="lede">Backend engineer (B.Tech Computer Science, 2026) who enjoys building reliable, concurrency-safe systems with Node.js and PostgreSQL, and reaching for C++ when a problem needs clean data structures and algorithms. I care about correctness under load, and I learn best by shipping: a PostgreSQL job queue, a multi-tenant webhook delivery platform, and a high-contention seat reservation system, each load-tested and hardened against failure.</p>
-      <p class="lede-2">This site is drawn like an engineering sheet. The parts list is my stack, the revision history is my background, and the schematics are distributed systems I built and stress-tested.</p>
+      <p class="lede">Backend engineer specializing in concurrency-safe distributed systems — built with Node.js, TypeScript, and PostgreSQL. I design for correctness under load: every system I ship is load-tested, hardened against crash failures, and verified end-to-end before it's considered done.</p>
+      <p class="lede-2">Three flagship projects demonstrate this: <strong>PgQueue</strong> — a durable job queue with FOR UPDATE SKIP LOCKED and lease-based crash recovery; <strong>HookRelay</strong> — a zero-loss multi-tenant webhook platform built on PgQueue; and <strong>SeatLock</strong> — a high-contention reservation engine proven deadlock-free with k6 load testing.</p>
       <div class="actions">
         <a class="btn btn-solid" href="myResume.pdf" target="_blank" rel="noopener">Résumé · PDF
           <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 1.5v9M3 7l4 4 4-4M2 12.5h10"/></svg></a>
@@ -950,10 +948,7 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
             <text class="ss" x="757" y="206">transactional enqueue</text>
           </svg>
           <figcaption class="pan">Drag to pan schematic →</figcaption>
-        </figure>
-
-        <div class="detail-lower">
-          <div class="deep-dive" style="margin:0; border-radius:0; border-top:0; border-left:3px solid var(--accent); border-right:0; border-bottom:0; padding:20px 24px 24px;">
+        <div class="deep-dive">
             <span class="deep-dive-title">EXPLAIN ANALYZE Job-Claim Query</span>
             <code>SELECT id, payload, attempt_count, lease_token 
 FROM pgqueue_jobs 
@@ -962,8 +957,9 @@ ORDER BY run_at ASC, id ASC
 FOR UPDATE SKIP LOCKED LIMIT 1;
 -- Index tuned: (status, run_at, id) for constant-time claiming as table grows</code>
           </div>
+        </figure>
 
-          <div class="notes" style="border-left:1px solid var(--hair);">
+        <div class="notes">
             <span class="label">Project Engineering Bullets (From Resume)</span>
             <ol>
               <li><strong>Zero Duplicate Pickups</strong>: Built a durable job queue library and admin API on PostgreSQL where concurrent workers claim jobs with <code>FOR UPDATE SKIP LOCKED</code>, so no job is ever picked up twice even with many workers running in parallel.</li>
@@ -972,7 +968,6 @@ FOR UPDATE SKIP LOCKED LIMIT 1;
               <li><strong>EXPLAIN ANALYZE Tuning</strong>: Profiled the job-claim query with <code>EXPLAIN ANALYZE</code> and tuned indexes so claiming stays fast as the jobs table grows.</li>
             </ol>
           </div>
-        </div>
       </div>
     </article>
 
@@ -1042,10 +1037,7 @@ FOR UPDATE SKIP LOCKED LIMIT 1;
             <text class="sn hot" x="614" y="244" text-anchor="middle">failed delivery replay / jittered backoff schedule</text>
           </svg>
           <figcaption class="pan">Drag to pan schematic →</figcaption>
-        </figure>
-
-        <div class="detail-lower">
-          <div class="deep-dive" style="margin:0; border-radius:0; border-top:0; border-left:3px solid var(--accent); border-right:0; border-bottom:0; padding:20px 24px 24px;">
+        <div class="deep-dive">
             <span class="deep-dive-title">Transactional Outbox Invariant (Zero Event Loss)</span>
             <code>BEGIN;
   -- Event, its delivery records, and its queue jobs commit atomically
@@ -1054,8 +1046,9 @@ FOR UPDATE SKIP LOCKED LIMIT 1;
   INSERT INTO pgqueue_jobs (task, payload) VALUES ('fan_out_delivery', ...);
 COMMIT; -- Validated with crash-injection tests</code>
           </div>
+        </figure>
 
-          <div class="notes" style="border-left:1px solid var(--hair);">
+        <div class="notes">
             <span class="label">Project Engineering Bullets (From Resume)</span>
             <ol>
               <li><strong>Fan-Out Built on PgQueue</strong>: Built a multi-tenant webhook delivery platform on top of PgQueue that fans events out to subscriber endpoints with HMAC-SHA256-signed payloads and automatic retries.</li>
@@ -1064,7 +1057,6 @@ COMMIT; -- Validated with crash-injection tests</code>
               <li><strong>SSRF Hardening &amp; Isolation</strong>: Hardened ingestion against SSRF (private-IP blocking, DNS-rebinding protection) and secured it with hashed API keys, per-tenant rate limiting, and idempotent ingestion, isolating slow endpoints so one bad tenant cannot delay everyone else's deliveries.</li>
             </ol>
           </div>
-        </div>
       </div>
     </article>
 
@@ -1124,18 +1116,16 @@ COMMIT; -- Validated with crash-injection tests</code>
             <text class="sn" x="383" y="243" text-anchor="middle">reconciliation repairs expired &amp; stuck holds</text>
           </svg>
           <figcaption class="pan">Drag to pan schematic →</figcaption>
-        </figure>
-
-        <div class="detail-lower">
-          <div class="deep-dive" style="margin:0; border-radius:0; border-top:0; border-left:3px solid var(--accent); border-right:0; border-bottom:0; padding:20px 24px 24px;">
+        <div class="deep-dive">
             <span class="deep-dive-title">k6 Load-Test Results (4 Concurrency Models Tested)</span>
             <code>1. Naive Baseline:       Deadlocks under heavy contention | Overselling detected
 2. Optimistic Versioning: High abort/retry rates under contention | Wasteful CPU cycles
 3. Atomic Updates:        Inflexible for all-or-nothing contiguous multi-seat holds
 4. Ordered Row Locks:     ELIMINATED DEADLOCKS | ZERO OVERSELLING (Selected Strategy)</code>
           </div>
+        </figure>
 
-          <div class="notes" style="border-left:1px solid var(--hair);">
+        <div class="notes">
             <span class="label">Project Engineering Bullets (From Resume)</span>
             <ol>
               <li><strong>Atomic Holds &amp; Anti-Overselling</strong>: Built a reservation backend with atomic all-or-nothing seat holds, automatic expiry of abandoned holds, and idempotent booking APIs, preventing overselling when many users grab the same seats at once.</li>
@@ -1144,7 +1134,6 @@ COMMIT; -- Validated with crash-injection tests</code>
               <li><strong>Real-Time SSE via LISTEN/NOTIFY</strong>: Streamed live seat availability to clients over Server-Sent Events backed by PostgreSQL LISTEN/NOTIFY, so every browser shows the same seat state without polling.</li>
             </ol>
           </div>
-        </div>
       </div>
     </article>
   </section>
