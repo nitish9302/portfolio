@@ -158,9 +158,10 @@ a { color: inherit; }
 .border-in { top: var(--m-top); left: var(--m-in); right: var(--m-in); bottom: var(--m-in); border: 1px solid var(--rule); transition: border-color 0.4s ease; }
 
 .zones { position: absolute; display: flex; font: 400 9.5px/1 var(--mono); color: var(--muted); }
-.band-left .zones, .band-right .zones { flex-direction: column; top: var(--m-top); bottom: var(--m-in); left: var(--m-out); right: 0; }
+.band-left .zones, .band-right .zones { flex-direction: column; top: var(--m-top); left: var(--m-out); right: 0; bottom: auto; height: 432px; }
 .band-bottom .zones { left: var(--m-in); right: var(--m-in); top: 0; bottom: var(--m-out); }
-.zones span { flex: 1; display: grid; place-items: center; position: relative; }
+.zones span { flex: none; height: 72px; display: grid; place-items: center; position: relative; }
+.band-bottom .zones span { flex: 1; height: auto; }
 .band-left .zones span + span::before, .band-right .zones span + span::before { content: ""; position: absolute; top: 0; left: 4px; right: 4px; height: 1px; background: var(--hair); }
 .band-bottom .zones span + span::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 1px; background: var(--hair); }
 
