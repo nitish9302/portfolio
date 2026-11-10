@@ -53,13 +53,13 @@
 
 <style>
 /* ==========================================================================
-   THEME DEFINITIONS:
-   - DARK THEME: Dark Gray + Crimson Red, White Fonts
-   - LIGHT THEME: White + Lavender, Black Fonts
+   ENGINEERING THEME DEFINITIONS:
+   - OBSIDIAN CRIMSON (Dark): Technical Dark Gray + Crimson Red, White Fonts
+   - LAVENDER VELLUM (Light): White Drafting Vellum + Vivid Lavender, Black Fonts
    ========================================================================== */
 
 :root {
-  /* DARK THEME (DEFAULT) */
+  /* OBSIDIAN CRIMSON (DEFAULT) */
   --paper: #121316;
   --paper-2: #191b21;
   --paper-surface: #1d1f27;
@@ -78,7 +78,7 @@
   --accent-glow: rgba(230, 25, 75, 0.35);
   --on-accent: #ffffff;
   
-  --code-bg: rgba(0, 0, 0, 0.45);
+  --code-bg: rgba(0, 0, 0, 0.55);
   --shade-l: 6%;
   --shade-r: 12%;
   
@@ -93,7 +93,7 @@
 }
 
 :root[data-theme="light"] {
-  /* LIGHT THEME: White + Lavender, Black Fonts */
+  /* LAVENDER VELLUM */
   --paper: #faf8ff;
   --paper-2: #f2eefa;
   --paper-surface: #ffffff;
@@ -112,7 +112,7 @@
   --accent-glow: rgba(124, 58, 237, 0.28);
   --on-accent: #ffffff;
   
-  --code-bg: rgba(124, 58, 237, 0.06);
+  --code-bg: rgba(124, 58, 237, 0.07);
   --shade-l: 5%;
   --shade-r: 10%;
   color-scheme: light;
@@ -173,9 +173,9 @@ a { color: inherit; }
 .nav a:hover, .nav a[aria-current="true"] { color: var(--ink); }
 .nav a[aria-current="true"]::after { content: ""; position: absolute; left: 12px; right: 12px; bottom: 2px; height: 2px; background: var(--accent); transition: background-color 0.4s; }
 
-/* ── Theme Switcher ── */
+/* ── Distinctive Theme Switcher ── */
 .theme-switch { display: flex; border: 1.5px solid var(--rule); border-radius: 2px; overflow: hidden; flex: none; }
-.theme-switch button { border: 0; background: none; cursor: pointer; padding: 7px 12px; font: 700 11.5px/1 var(--cond); letter-spacing: .14em; color: var(--muted); transition: background-color 0.25s, color 0.25s; }
+.theme-switch button { border: 0; background: none; cursor: pointer; padding: 7px 12px; font: 700 11px/1 var(--cond); letter-spacing: .14em; color: var(--muted); transition: background-color 0.25s, color 0.25s; }
 .theme-switch button[aria-pressed="true"] { background: var(--ink); color: var(--paper); }
 
 /* ── Content Container ── */
@@ -301,21 +301,22 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
 .ext:hover { color: var(--accent-text); border-color: var(--accent); }
 .detail-head .ext { margin-left: auto; }
 
-.detail-body { display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr); }
-.schematic { margin: 0; padding: 18px; border-right: 1px solid var(--hair); overflow-x: auto; }
-.sch { display: block; width: 100%; height: auto; min-width: 580px; }
+.detail-body { display: grid; grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr); }
+.schematic { margin: 0; padding: 20px; border-right: 1px solid var(--hair); overflow-x: auto; }
+.sch { display: block; width: 100%; height: auto; min-width: 600px; }
 .pan { display: none; position: sticky; left: 0; margin-top: 10px; font: 600 11px/1 var(--cond); letter-spacing: .16em; text-transform: uppercase; color: var(--muted); }
 
-/* Schematic Components */
-.sch .sb { fill: var(--paper-surface); stroke: var(--ink); stroke-width: 1.2; transition: fill 0.3s, stroke 0.3s; }
-.sch .sb.hot { fill: var(--accent-tint); stroke: var(--accent); }
+/* Schematic Components - Mathematically Sized & Vertically Centered */
+.sch text { user-select: none; -webkit-user-select: none; }
+.sch .sb { fill: var(--paper-surface); stroke: var(--ink); stroke-width: 1.3; transition: fill 0.3s, stroke 0.3s; }
+.sch .sb.hot { fill: var(--accent-tint); stroke: var(--accent); stroke-width: 1.5; }
 .sch .zone { fill: none; stroke: var(--rule); stroke-dasharray: 6 5; }
-.sch .sl { font: 600 12px var(--cond); letter-spacing: .1em; text-anchor: middle; fill: var(--ink); }
-.sch .ss { font: 400 9.5px var(--mono); text-anchor: middle; fill: var(--muted); }
+.sch .sl { font: 700 11.5px/1 var(--cond); letter-spacing: .08em; text-anchor: middle; dominant-baseline: central; fill: var(--ink); }
+.sch .ss { font: 400 9.5px/1 var(--mono); text-anchor: middle; dominant-baseline: central; fill: var(--muted); }
 .sch .sa { fill: none; stroke: var(--ink); stroke-width: 1.2; }
 .sch .sa.hot { stroke: var(--accent); stroke-width: 1.6; }
 .sch .sa.flow-dash { stroke-dasharray: 6 4; animation: flowDash 1s linear infinite; }
-.sch .sn { font: 400 9.5px var(--mono); fill: var(--muted); }
+.sch .sn { font: 500 9.5px/1 var(--mono); dominant-baseline: central; fill: var(--muted); }
 .sch .sn.hot { fill: var(--accent-text); font-weight: 700; }
 .ah { fill: var(--ink); }
 .ah-acc { fill: var(--accent); }
@@ -325,16 +326,16 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
   to { stroke-dashoffset: -20; }
 }
 
-.notes { padding: 18px 22px 22px 18px; }
+.notes { padding: 20px 24px 24px 20px; }
 .notes .label { display: block; margin-bottom: 12px; }
 .notes ol { margin: 0; padding: 0; list-style: none; counter-reset: n; }
-.notes li { counter-increment: n; position: relative; padding-left: 34px; margin-bottom: 12px; font-size: 15.5px; line-height: 1.55; }
+.notes li { counter-increment: n; position: relative; padding-left: 34px; margin-bottom: 14px; font-size: 15.5px; line-height: 1.55; }
 .notes li::before { content: counter(n) "."; position: absolute; left: 0; top: 1px; font: 700 13px/1.6 var(--mono); color: var(--accent-text); }
 
 /* Technical Deep Dive Panel */
-.deep-dive { margin-top: 16px; padding: 12px 16px; background: var(--code-bg); border: 1px solid var(--hair); font: 400 12.5px/1.6 var(--mono); border-left: 3px solid var(--accent); border-radius: 2px; }
-.deep-dive-title { font: 700 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 6px; }
-.deep-dive code { display: block; overflow-x: auto; white-space: pre; color: var(--ink); }
+.deep-dive { margin-top: 18px; padding: 14px 18px; background: var(--code-bg); border: 1px solid var(--hair); font: 400 12.5px/1.65 var(--mono); border-left: 3px solid var(--accent); border-radius: 4px; }
+.deep-dive-title { display: block; font: 700 11px/1 var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--accent-text); margin-bottom: 8px; }
+.deep-dive code { display: block; overflow-x: auto; white-space: pre; color: var(--ink); font-family: var(--mono); }
 
 /* ── Drawing Index Table (Sheet 4) ── */
 .idx td.dwg { width: 76px; font: 700 13px/1.9 var(--mono); color: var(--ink-2); white-space: nowrap; }
@@ -376,8 +377,8 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
   position: fixed;
   inset: 0;
   z-index: 1000;
-  background: rgba(0, 0, 0, 0.75);
-  backdrop-filter: blur(4px);
+  background: rgba(0, 0, 0, 0.78);
+  backdrop-filter: blur(5px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -397,7 +398,7 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
   max-width: 840px;
   max-height: 88vh;
   overflow-y: auto;
-  box-shadow: 0 16px 40px rgba(0,0,0,0.5);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.6);
   transform: translateY(16px) scale(0.98);
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   padding: 32px;
@@ -466,6 +467,7 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
   :root { --m-out: 6px; --m-in: 12px; --m-top: 54px; }
   .zones, .nav, .ref span { display: none; }
   .theme-switch { margin-left: auto; }
+  .theme-switch button { padding: 6px 10px; font-size: 10.5px; }
   .page { padding-top: calc(var(--m-top) + 28px); }
   .where { text-align: left; }
   .lede { font-size: 19px; }
@@ -529,9 +531,9 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
       <a href="#projects">Projects</a>
       <a href="#contact">Contact</a>
     </nav>
-    <div class="theme-switch" role="group" aria-label="Theme Selector">
-      <button type="button" data-set-theme="dark" aria-pressed="true">DARK (CRIMSON)</button>
-      <button type="button" data-set-theme="light" aria-pressed="false">LIGHT (LAVENDER)</button>
+    <div class="theme-switch" role="group" aria-label="Engineering Drawing Theme">
+      <button type="button" data-set-theme="dark" aria-pressed="true">OBSIDIAN CRIMSON</button>
+      <button type="button" data-set-theme="light" aria-pressed="false">LAVENDER VELLUM</button>
     </div>
   </div>
 </header>
@@ -557,8 +559,10 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
       <p class="lede">Backend engineer (B.Tech Computer Science, 2026) who enjoys building reliable, concurrency-safe systems with Node.js and PostgreSQL, and reaching for C++ when a problem needs clean data structures and algorithms. I care about correctness under load, and I learn best by shipping: a PostgreSQL job queue, a multi-tenant webhook delivery platform, and a high-contention seat reservation system, each load-tested and hardened against failure.</p>
       <p class="lede-2">This site is drawn like an engineering sheet. The parts list is my stack, the revision history is my background, and the schematics are distributed systems I built and stress-tested.</p>
       <div class="actions">
-        <button class="btn btn-solid" type="button" id="open-resume-btn">Résumé · Preview & LaTeX
-          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 1.5v9M3 7l4 4 4-4M2 12.5h10"/></svg></button>
+        <a class="btn btn-solid" href="assets/resume/Nitish_Chauhan_Resume.pdf" target="_blank" rel="noopener">Résumé · PDF
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M7 1.5v9M3 7l4 4 4-4M2 12.5h10"/></svg></a>
+        <button class="btn" type="button" id="open-resume-btn">Preview
+          <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M1 7s2.5-4.5 6-4.5 6 4.5 6 4.5-2.5 4.5-6 4.5-6-4.5-6-4.5Z"/><circle cx="7" cy="7" r="2"/></svg></button>
         <a class="btn" href="#contact">Contact
           <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M3 3l8 8M11 4.5V11H4.5"/></svg></a>
       </div>
@@ -779,52 +783,60 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
       </header>
       <div class="detail-body">
         <figure class="schematic">
-          <svg class="sch" viewBox="0 0 640 236" role="img" aria-label="Schematic of PgQueue: Workers claim jobs with FOR UPDATE SKIP LOCKED. Lease-based crash recovery with worker heartbeats and expiry reaper. DLQ on retries.">
-            <!-- Transaction Boundary -->
-            <rect class="zone" x="140" y="8" width="340" height="220"/>
-            <text class="sn" x="152" y="24" text-anchor="start">POSTGRESQL TRANSACTION BOUNDARY</text>
+          <svg class="sch" viewBox="0 0 720 250" role="img" aria-label="Schematic of PgQueue: Workers claim jobs with FOR UPDATE SKIP LOCKED. Lease-based crash recovery with worker heartbeats and expiry reaper. DLQ on retries.">
+            <!-- PostgreSQL Transaction Boundary -->
+            <rect class="zone" x="166" y="12" width="374" height="226" rx="4"/>
+            <text class="sn" x="180" y="28">POSTGRESQL TRANSACTION BOUNDARY</text>
 
             <!-- Caller App -->
-            <rect class="sb" x="8" y="70" width="104" height="56"/>
-            <text class="sl" x="60" y="96">CALLER APP</text>
-            <text class="ss" x="60" y="111">enqueue()</text>
+            <rect class="sb" x="14" y="60" width="106" height="60" rx="3"/>
+            <text class="sl" x="67" y="82">CALLER APP</text>
+            <text class="ss" x="67" y="98">enqueue(job)</text>
 
-            <path class="sa" d="M112 98H158" marker-end="url(#ah)"/>
-            <text class="sn" x="135" y="90" text-anchor="middle">atomic enqueue</text>
+            <path class="sa" d="M120 90H180" marker-end="url(#ah)"/>
+            <text class="sn" x="150" y="76" text-anchor="middle">atomic txn</text>
 
             <!-- Jobs Table -->
-            <rect class="sb hot" x="162" y="70" width="124" height="56"/>
-            <text class="sl" x="224" y="96">JOBS TABLE</text>
-            <text class="ss" x="224" y="111">FOR UPDATE SKIP LOCKED</text>
+            <rect class="sb hot" x="180" y="60" width="136" height="64" rx="3"/>
+            <text class="sl" x="248" y="78">JOBS TABLE</text>
+            <text class="ss" x="248" y="92">FOR UPDATE</text>
+            <text class="ss" x="248" y="106">SKIP LOCKED</text>
 
             <!-- Expiry Reaper -->
-            <path class="sa flow-dash" d="M224 126V158" marker-end="url(#ah)"/>
-            <rect class="sb" x="162" y="162" width="124" height="52"/>
-            <text class="sl" x="224" y="185">EXPIRY REAPER</text>
-            <text class="ss" x="224" y="200">reassigns crashed jobs</text>
+            <path class="sa flow-dash" d="M248 124V166" marker-end="url(#ah)"/>
+            <text class="sn" x="256" y="145" text-anchor="start">monitor lease</text>
+
+            <rect class="sb" x="180" y="166" width="136" height="60" rx="3"/>
+            <text class="sl" x="248" y="184">EXPIRY REAPER</text>
+            <text class="ss" x="248" y="198">reclaims stalled jobs</text>
+            <text class="ss" x="248" y="210">(worker crash recovery)</text>
+
+            <!-- Reassign Loop -->
+            <path class="sa flow-dash" d="M180 196H146V90H180" marker-end="url(#ah)"/>
 
             <!-- Concurrent Worker Claim -->
-            <path class="sa hot flow-dash" d="M286 98H344" marker-end="url(#ah-acc)"/>
-            <text class="sn hot" x="315" y="90" text-anchor="middle">claim</text>
+            <path class="sa hot flow-dash" d="M316 90H386" marker-end="url(#ah-acc)"/>
+            <text class="sn hot" x="351" y="76" text-anchor="middle">claim</text>
 
             <!-- Worker Pool -->
-            <rect class="sb" x="348" y="46" width="116" height="102"/>
-            <text class="sl" x="406" y="72">WORKER POOL</text>
-            <text class="ss" x="406" y="88">concurrent workers</text>
-            <text class="ss" x="406" y="104">worker heartbeats</text>
-            <text class="ss" x="406" y="120">fenced completion</text>
-            <text class="ss" x="406" y="136">chaos tested</text>
+            <rect class="sb" x="386" y="44" width="140" height="96" rx="3"/>
+            <text class="sl" x="456" y="64">WORKER POOL</text>
+            <text class="ss" x="456" y="78">concurrent workers</text>
+            <text class="ss" x="456" y="92">worker heartbeats</text>
+            <text class="ss" x="456" y="106">fenced completion</text>
+            <text class="ss" x="456" y="120">chaos tested</text>
 
-            <!-- Completed vs Dead Letter -->
-            <path class="sa" d="M464 74H524" marker-end="url(#ah)"/>
-            <rect class="sb" x="528" y="54" width="104" height="40"/>
-            <text class="sl" x="580" y="76">COMPLETED</text>
-            <text class="ss" x="580" y="89">fenced update</text>
+            <!-- Completed -->
+            <path class="sa" d="M526 66H576" marker-end="url(#ah)"/>
+            <rect class="sb" x="576" y="44" width="130" height="46" rx="3"/>
+            <text class="sl" x="641" y="60">COMPLETED</text>
+            <text class="ss" x="641" y="74">fenced update</text>
 
-            <path class="sa hot flow-dash" d="M464 120H524" marker-end="url(#ah-acc)"/>
-            <rect class="sb hot" x="528" y="104" width="104" height="40"/>
-            <text class="sl" x="580" y="126">DEAD LETTER</text>
-            <text class="ss" x="580" y="139">full jitter backoff</text>
+            <!-- Dead Letter -->
+            <path class="sa hot flow-dash" d="M526 116H576" marker-end="url(#ah-acc)"/>
+            <rect class="sb hot" x="576" y="94" width="130" height="48" rx="3"/>
+            <text class="sl" x="641" y="110">DEAD LETTER (DLQ)</text>
+            <text class="ss" x="641" y="125">full jitter backoff</text>
           </svg>
           <figcaption class="pan">Drag to pan schematic →</figcaption>
           
@@ -861,56 +873,61 @@ FOR UPDATE SKIP LOCKED LIMIT 1;
       </header>
       <div class="detail-body">
         <figure class="schematic">
-          <svg class="sch" viewBox="0 0 640 236" role="img" aria-label="Schematic of HookRelay: Multi-tenant webhook platform built on PgQueue. Ingestion SSRF defense. Zero-loss Transactional outbox. Circuit breaker and HMAC-SHA256 signing.">
-            <!-- Inbound Event -->
-            <rect class="sb" x="8" y="70" width="96" height="58"/>
-            <text class="sl" x="56" y="96">TENANT</text>
-            <text class="ss" x="56" y="111">inbound event</text>
+          <svg class="sch" viewBox="0 0 720 250" role="img" aria-label="Schematic of HookRelay: Multi-tenant webhook platform built on PgQueue. Ingestion SSRF defense. Zero-loss Transactional outbox. Circuit breaker and HMAC-SHA256 signing.">
+            <!-- Tenant Ingress -->
+            <rect class="sb" x="14" y="62" width="102" height="60" rx="3"/>
+            <text class="sl" x="65" y="84">TENANT APP</text>
+            <text class="ss" x="65" y="100">inbound webhook</text>
 
-            <path class="sa" d="M104 99H126" marker-end="url(#ah)"/>
+            <path class="sa" d="M116 92H154" marker-end="url(#ah)"/>
 
-            <!-- SSRF & Ingestion Guard -->
-            <rect class="sb hot" x="130" y="56" width="112" height="88"/>
-            <text class="sl" x="186" y="80">SSRF SHIELD</text>
-            <text class="ss" x="186" y="95">private-IP block</text>
-            <text class="ss" x="186" y="109">DNS rebinding</text>
-            <text class="ss" x="186" y="123">hashed API keys</text>
-            <text class="ss" x="186" y="137">tenant rate limit</text>
+            <!-- SSRF Shield & Ingestion -->
+            <rect class="sb hot" x="154" y="44" width="124" height="96" rx="3"/>
+            <text class="sl" x="216" y="64">SSRF SHIELD</text>
+            <text class="ss" x="216" y="78">private-IP block</text>
+            <text class="ss" x="216" y="92">DNS rebinding</text>
+            <text class="ss" x="216" y="106">hashed API keys</text>
+            <text class="ss" x="216" y="120">tenant rate limit</text>
 
-            <path class="sa" d="M242 99H268" marker-end="url(#ah)"/>
+            <path class="sa" d="M278 92H316" marker-end="url(#ah)"/>
 
             <!-- Transactional Outbox Zone -->
-            <rect class="zone" x="272" y="12" width="140" height="210"/>
-            <text class="sn" x="280" y="30" text-anchor="start">TRANSACTIONAL OUTBOX</text>
+            <rect class="zone" x="316" y="12" width="156" height="226" rx="4"/>
+            <text class="sn" x="328" y="28">TRANSACTIONAL OUTBOX</text>
 
-            <rect class="sb" x="282" y="46" width="120" height="34"/>
-            <text class="sl" x="342" y="67">EVENT</text>
-            <rect class="sb" x="282" y="92" width="120" height="34"/>
-            <text class="sl" x="342" y="113">DELIVERY RECORDS</text>
-            <rect class="sb" x="282" y="138" width="120" height="34"/>
-            <text class="sl" x="342" y="159">QUEUE JOBS</text>
-            <text class="sn" x="342" y="196" text-anchor="middle">1 PostgreSQL Transaction</text>
+            <rect class="sb" x="328" y="44" width="132" height="30" rx="2"/>
+            <text class="sl" x="394" y="59">EVENT RECORD</text>
 
-            <path class="sa hot flow-dash" d="M412 99H440" marker-end="url(#ah-acc)"/>
+            <rect class="sb" x="328" y="80" width="132" height="30" rx="2"/>
+            <text class="sl" x="394" y="95">DELIVERY LOGS</text>
 
-            <!-- Dispatcher & Circuit Breaker -->
-            <rect class="sb" x="444" y="56" width="108" height="88"/>
-            <text class="sl" x="498" y="80">DISPATCHER</text>
-            <text class="ss" x="498" y="95">built on PgQueue</text>
-            <text class="ss" x="498" y="109">HMAC-SHA256</text>
-            <text class="ss" x="498" y="123">circuit breaker</text>
-            <text class="ss" x="498" y="137">Retry-After header</text>
+            <rect class="sb" x="328" y="116" width="132" height="30" rx="2"/>
+            <text class="sl" x="394" y="131">PGQUEUE JOBS</text>
 
-            <path class="sa" d="M552 99H572" marker-end="url(#ah)"/>
+            <text class="sn" x="394" y="174" text-anchor="middle">1 POSTGRESQL TXN</text>
+            <text class="sn hot" x="394" y="190" text-anchor="middle">zero lost events</text>
+            <text class="ss" x="394" y="204" text-anchor="middle">crash-test verified</text>
 
-            <!-- Subscriber Target -->
-            <rect class="sb" x="576" y="70" width="58" height="58"/>
-            <text class="sl" x="605" y="96">TARGET</text>
-            <text class="ss" x="605" y="111">endpoint</text>
+            <path class="sa hot flow-dash" d="M472 92H510" marker-end="url(#ah-acc)"/>
+
+            <!-- Dispatcher -->
+            <rect class="sb" x="510" y="44" width="124" height="96" rx="3"/>
+            <text class="sl" x="572" y="64">DISPATCHER</text>
+            <text class="ss" x="572" y="78">built on PgQueue</text>
+            <text class="ss" x="572" y="92">HMAC-SHA256</text>
+            <text class="ss" x="572" y="106">circuit breaker</text>
+            <text class="ss" x="572" y="120">Retry-After header</text>
+
+            <path class="sa" d="M634 92H664" marker-end="url(#ah)"/>
+
+            <!-- Target Subscriber -->
+            <rect class="sb" x="664" y="62" width="46" height="60" rx="3"/>
+            <text class="sl" x="687" y="84">TARGET</text>
+            <text class="ss" x="687" y="100">200 OK</text>
 
             <!-- Replay loop -->
-            <path class="sa hot flow-dash" d="M498 144V186H342V172" marker-end="url(#ah-acc)"/>
-            <text class="sn hot" x="424" y="202" text-anchor="middle">replay failed deliveries</text>
+            <path class="sa hot flow-dash" d="M572 140V218H394V146" marker-end="url(#ah-acc)"/>
+            <text class="sn hot" x="483" y="234" text-anchor="middle">failed delivery replay / backoff schedule</text>
           </svg>
           <figcaption class="pan">Drag to pan schematic →</figcaption>
           
@@ -947,48 +964,51 @@ COMMIT; -- Validated with crash-injection tests</code>
       </header>
       <div class="detail-body">
         <figure class="schematic">
-          <svg class="sch" viewBox="0 0 640 236" role="img" aria-label="Schematic of SeatLock: Ordered row locks preventing deadlocks. 3-phase payment confirmation. Reconciliation job. PostgreSQL LISTEN/NOTIFY and SSE streaming.">
-            <!-- Client Request -->
-            <rect class="sb" x="8" y="70" width="104" height="56"/>
-            <text class="sl" x="60" y="96">CLIENTS</text>
-            <text class="ss" x="60" y="111">hold seat array</text>
+          <svg class="sch" viewBox="0 0 720 250" role="img" aria-label="Schematic of SeatLock: Ordered row locks preventing deadlocks. 3-phase payment confirmation. Reconciliation job. PostgreSQL LISTEN/NOTIFY and SSE streaming.">
+            <!-- Client Users -->
+            <rect class="sb" x="14" y="62" width="102" height="60" rx="3"/>
+            <text class="sl" x="65" y="84">CLIENT USERS</text>
+            <text class="ss" x="65" y="100">hold seats [A1..A4]</text>
 
-            <path class="sa" d="M112 98H136" marker-end="url(#ah)"/>
+            <path class="sa" d="M116 92H154" marker-end="url(#ah)"/>
 
-            <!-- Ordered Locks Resolver -->
-            <rect class="sb hot" x="140" y="56" width="126" height="84"/>
-            <text class="sl" x="203" y="80">ORDERED LOCKS</text>
-            <text class="ss" x="203" y="95">sort(seat_ids)</text>
-            <text class="ss" x="203" y="109">zero deadlocks</text>
-            <text class="ss" x="203" y="123">k6 load-tested</text>
+            <!-- Ordered Row Locks -->
+            <rect class="sb hot" x="154" y="44" width="130" height="96" rx="3"/>
+            <text class="sl" x="219" y="64">ORDERED LOCKS</text>
+            <text class="ss" x="219" y="78">sort(seat_ids)</text>
+            <text class="ss" x="219" y="92">zero deadlocks</text>
+            <text class="ss" x="219" y="106">atomic holds</text>
+            <text class="ss" x="219" y="120">k6 load-tested</text>
 
-            <path class="sa" d="M266 98H294" marker-end="url(#ah)"/>
+            <path class="sa" d="M284 92H322" marker-end="url(#ah)"/>
 
             <!-- 3-Phase Payment -->
-            <rect class="sb" x="298" y="56" width="118" height="84"/>
-            <text class="sl" x="357" y="80">3-PHASE PAY</text>
-            <text class="ss" x="357" y="95">idempotent ref</text>
-            <text class="ss" x="357" y="109">auto-expiry holds</text>
-            <text class="ss" x="357" y="123">reconciliation job</text>
+            <rect class="sb" x="322" y="44" width="130" height="96" rx="3"/>
+            <text class="sl" x="387" y="64">3-PHASE PAYMENT</text>
+            <text class="ss" x="387" y="78">hold TTL (5 min)</text>
+            <text class="ss" x="387" y="92">idempotent ref</text>
+            <text class="ss" x="387" y="106">reconciliation job</text>
+            <text class="ss" x="387" y="120">atomic booking</text>
 
-            <path class="sa" d="M416 98H444" marker-end="url(#ah)"/>
+            <path class="sa" d="M452 92H490" marker-end="url(#ah)"/>
 
-            <!-- PostgreSQL Engine -->
-            <path class="sb" d="M448 64V132A46 7 0 0 0 540 132V64Z"/>
-            <ellipse class="sb" cx="494" cy="64" rx="46" ry="7"/>
-            <text class="sl" x="494" y="94">POSTGRESQL</text>
-            <text class="ss" x="494" y="109">LISTEN / NOTIFY</text>
+            <!-- PostgreSQL Cylinder -->
+            <path class="sb" d="M494 58V126A52 10 0 0 0 598 126V58Z"/>
+            <ellipse class="sb" cx="546" cy="58" rx="52" ry="10"/>
+            <text class="sl" x="546" y="90">POSTGRESQL</text>
+            <text class="ss" x="546" y="106">LISTEN / NOTIFY</text>
 
-            <path class="sa hot flow-dash" d="M540 98H566" marker-end="url(#ah-acc)"/>
+            <path class="sa hot flow-dash" d="M602 92H640" marker-end="url(#ah-acc)"/>
 
-            <!-- SSE Push -->
-            <rect class="sb hot" x="570" y="70" width="64" height="56"/>
-            <text class="sl" x="602" y="96">SSE LIVE</text>
-            <text class="ss" x="602" y="111">zero polling</text>
+            <!-- SSE Live Stream -->
+            <rect class="sb hot" x="640" y="62" width="68" height="60" rx="3"/>
+            <text class="sl" x="674" y="80">SSE LIVE</text>
+            <text class="ss" x="674" y="94">push diffs</text>
+            <text class="ss" x="674" y="106">zero polling</text>
 
-            <!-- Reconciliation loop -->
-            <path class="sa flow-dash" d="M357 140V186H203V140" marker-end="url(#ah)"/>
-            <text class="sn" x="280" y="202" text-anchor="middle">reconciliation repairs expired &amp; stuck holds</text>
+            <!-- Reconciliation Loop -->
+            <path class="sa flow-dash" d="M387 140V218H219V140" marker-end="url(#ah)"/>
+            <text class="sn" x="303" y="234" text-anchor="middle">reconciliation repairs expired &amp; stuck holds</text>
           </svg>
           <figcaption class="pan">Drag to pan schematic →</figcaption>
           
@@ -1108,7 +1128,10 @@ COMMIT; -- Validated with crash-injection tests</code>
             <p>Single-column ATS-friendly resume built on Jake Gutierrez's template for pdfLaTeX, detailing systems metrics, concurrency guarantees, and qualifications.</p>
           </td>
           <td class="st"><span class="st-repo">LATEX DOC</span></td>
-          <td class="ln"><a class="ext" href="assets/resume/Nitish_Chauhan_Resume.tex" target="_blank" rel="noopener" download="Nitish_Chauhan_Resume.tex">Download .tex</a></td>
+          <td class="ln">
+            <a class="ext" href="assets/resume/Nitish_Chauhan_Resume.pdf" target="_blank" rel="noopener">PDF</a>
+            <a class="ext" href="assets/resume/Nitish_Chauhan_Resume.tex" target="_blank" rel="noopener" download="Nitish_Chauhan_Resume.tex">LaTeX</a>
+          </td>
         </tr>
       </tbody>
     </table>
@@ -1225,8 +1248,9 @@ COMMIT; -- Validated with crash-injection tests</code>
         <li>Secured 2nd place in an Inter-School Science Quiz Competition.</li>
       </ul>
       
-      <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: flex-end;">
-        <a class="btn btn-solid" href="assets/resume/Nitish_Chauhan_Resume.tex" download="Nitish_Chauhan_Resume.tex">Download .tex Source</a>
+      <div style="margin-top: 24px; display: flex; gap: 12px; justify-content: flex-end; flex-wrap: wrap;">
+        <a class="btn" href="assets/resume/Nitish_Chauhan_Resume.tex" download="Nitish_Chauhan_Resume.tex">Download .tex Source</a>
+        <a class="btn btn-solid" href="assets/resume/Nitish_Chauhan_Resume.pdf" target="_blank" rel="noopener" download="Nitish_Chauhan_Resume.pdf">Download Official PDF</a>
       </div>
     </div>
   </div>
