@@ -157,12 +157,11 @@ a { color: inherit; }
 .border-out { inset: var(--m-out); border: 1.5px solid var(--ink); transition: border-color 0.4s ease; }
 .border-in { top: var(--m-top); left: var(--m-in); right: var(--m-in); bottom: var(--m-in); border: 1px solid var(--rule); transition: border-color 0.4s ease; }
 
+/* Bottom zone numbers (1-8) only — side A-F labels removed (look bad on scrolling pages) */
 .zones { position: absolute; display: flex; font: 400 9.5px/1 var(--mono); color: var(--muted); }
-.band-left .zones, .band-right .zones { flex-direction: column; top: var(--m-top); left: var(--m-out); right: 0; bottom: auto; height: 432px; }
+.band-left .zones, .band-right .zones { display: none; }
 .band-bottom .zones { left: var(--m-in); right: var(--m-in); top: 0; bottom: var(--m-out); }
-.zones span { flex: none; height: 72px; display: grid; place-items: center; position: relative; }
-.band-bottom .zones span { flex: 1; height: auto; }
-.band-left .zones span + span::before, .band-right .zones span + span::before { content: ""; position: absolute; top: 0; left: 4px; right: 4px; height: 1px; background: var(--hair); }
+.zones span { flex: 1; display: grid; place-items: center; position: relative; }
 .band-bottom .zones span + span::before { content: ""; position: absolute; left: 0; top: 4px; bottom: 4px; width: 1px; background: var(--hair); }
 
 /* ── Header Navigation Bar ── */
@@ -566,9 +565,9 @@ table.revs, table.idx { width: 100%; border-collapse: collapse; border: 1.5px so
   </defs>
 </svg>
 
-<!-- Drawing Sheet Margin Coordinate Zones -->
-<div class="band band-left" aria-hidden="true"><div class="zones"><span>F</span><span>E</span><span>D</span><span>C</span><span>B</span><span>A</span></div></div>
-<div class="band band-right" aria-hidden="true"><div class="zones"><span>F</span><span>E</span><span>D</span><span>C</span><span>B</span><span>A</span></div></div>
+<!-- Drawing Sheet Margin — bottom zone numbers only -->
+<div class="band band-left" aria-hidden="true"></div>
+<div class="band band-right" aria-hidden="true"></div>
 <div class="band band-bottom" aria-hidden="true"><div class="zones"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span><span>6</span><span>7</span><span>8</span></div></div>
 
 <!-- Technical Drawing Header -->
