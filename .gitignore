@@ -1,0 +1,12 @@
+# Reference directory
+vinay-engineer/
+
+# Backups
+index.backup.html
+*.bak
+*.tmp
+
+# OS files
+.DS_Store
+Thumbs.db
+

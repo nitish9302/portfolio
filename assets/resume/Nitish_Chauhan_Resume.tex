@@ -1,0 +1,189 @@
+%-------------------------
+% ATS-friendly one-page resume
+% Based on Jake Gutierrez's popular single-column template
+% Compile with pdfLaTeX (Overleaf default). Do not switch to XeLaTeX.
+%-------------------------
+
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{latexsym}
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage[usenames,dvipsnames]{color}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{fontawesome5}
+
+\ifdefined\pdfglyphtounicode
+  \input{glyphtounicode}
+  \pdfgentounicode=1
+\fi
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+% Margins
+\addtolength{\oddsidemargin}{-0.6in}
+\addtolength{\evensidemargin}{-0.6in}
+\addtolength{\textwidth}{1.2in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.3in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section headings
+\titleformat{\section}{
+  \vspace{-4pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=NavyBlue,
+  linkcolor=NavyBlue,
+  citecolor=NavyBlue,
+  pdfborder={0 0 0}
+}
+\newcommand{\link}[2]{\href{#1}{\textcolor{NavyBlue}{\underline{#2}}}}
+
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[3]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small\textbf{#1} & \small#3 \\[2pt]
+      \small#2 & \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeEducationEntry}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & {\small\color{darkgray}#2} \\
+      \textit{\small #3} & {\small\color{darkgray}#4} \\
+    \end{tabular*}\vspace{-5pt}
+}
+
+\renewcommand\labelitemii{$\vcenter{\hbox{\tiny$\bullet$}}$}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}[leftmargin=0.2in]}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-5pt}}
+
+\begin{document}
+
+%----------HEADING----------
+\begin{center}
+    {\Huge \scshape Nitish Chauhan} \\ \vspace{4pt}
+    \small
+    \link{tel:+917505102919}{\faPhone*\ Phone} $|$
+    \link{mailto:nitishchauhan7505@gmail.com}{\faEnvelope\ Email} $|$
+    \link{https://nitishchauhan.dev/}{\faGlobe\ Portfolio} $|$
+    \link{https://github.com/nitish9302}{\faGithub\ GitHub} $|$
+    \link{https://www.linkedin.com/in/nitishchauhan13/}{\faLinkedinIn\ LinkedIn}
+\end{center}
+
+%-----------SUMMARY-----------
+\section{Summary}
+\small{Backend engineer (B.Tech Computer Science, 2026) who enjoys building reliable, concurrency-safe systems with Node.js and PostgreSQL, and reaching for C++ when a problem needs clean data structures and algorithms. I care about correctness under load, and I learn best by shipping: a PostgreSQL job queue, a multi-tenant webhook delivery platform, and a high-contention seat reservation system, each load-tested and hardened against failure.}
+
+%-----------TECHNICAL SKILLS-----------
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: C++, TypeScript, JavaScript, SQL} \\
+     \textbf{Frontend}{: React, HTML, CSS} \\
+     \textbf{Backend}{: Node.js, Express.js, REST APIs, Server-Sent Events} \\
+     \textbf{Database}{: PostgreSQL, MongoDB} \\
+     \textbf{Tools}{: Docker, Docker Compose, GitHub Actions, Git, Linux/Bash}
+    }}
+ \end{itemize}
+
+%-----------PROJECTS-----------
+\section{Projects}
+  \resumeSubHeadingListStart
+
+    \resumeProjectHeading
+      {PgQueue}
+      {Durable Job Queue on PostgreSQL \hspace{0.5em}$|$\hspace{0.5em} \emph{Node.js, TypeScript, PostgreSQL, Docker}}
+      {\link{https://github.com/nitish9302/pgqueue}{\faCode\ Source Code}}
+      \resumeItemListStart
+        \resumeItem{Built a durable job queue library and admin API on PostgreSQL where concurrent workers claim jobs with FOR UPDATE SKIP LOCKED, so no job is ever picked up twice even with many workers running in parallel.}
+        \resumeItem{Achieved at-least-once delivery with lease-based crash recovery (worker heartbeats, an expiry reaper that reassigns jobs from crashed workers, fenced completion updates), verified with chaos tests that kill workers mid-processing.}
+        \resumeItem{Added exponential backoff with full jitter, dead-letter handling for repeatedly failing jobs, idempotency keys, and transactional enqueue so jobs commit atomically with the caller's own database changes.}
+        \resumeItem{Profiled the job-claim query with EXPLAIN ANALYZE and tuned indexes so claiming stays fast as the jobs table grows.}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {HookRelay}
+      {Multi-Tenant Webhook Delivery Platform \hspace{0.5em}$|$\hspace{0.5em} \emph{Node.js, TypeScript, PostgreSQL, Docker}}
+      {\link{https://github.com/nitish9302/hookrelay}{\faCode\ Source Code}}
+      \resumeItemListStart
+        \resumeItem{Built a multi-tenant webhook delivery platform on top of PgQueue that fans events out to subscriber endpoints with HMAC-SHA256-signed payloads and automatic retries.}
+        \resumeItem{Guaranteed no accepted event is lost using a transactional outbox (the event, its delivery records, and its queue jobs commit in one PostgreSQL transaction), validated with crash-injection tests.}
+        \resumeItem{Added a per-endpoint circuit breaker, a jittered retry schedule that respects Retry-After headers, and replay of failed deliveries, so a subscriber's temporary outage never becomes permanent data loss.}
+        \resumeItem{Hardened ingestion against SSRF (private-IP blocking, DNS-rebinding protection) and secured it with hashed API keys, per-tenant rate limiting, and idempotent ingestion, isolating slow endpoints so one bad tenant cannot delay everyone else's deliveries.}
+      \resumeItemListEnd
+
+    \resumeProjectHeading
+      {SeatLock}
+      {High-Contention Seat Reservation System \hspace{0.5em}$|$\hspace{0.5em} \emph{Node.js, TypeScript, PostgreSQL, Docker}}
+      {\link{https://github.com/nitish9302/seatlock}{\faCode\ Source Code}}
+      \resumeItemListStart
+        \resumeItem{Built a reservation backend with atomic all-or-nothing seat holds, automatic expiry of abandoned holds, and idempotent booking APIs, preventing overselling when many users grab the same seats at once.}
+        \resumeItem{Implemented and load-tested four concurrency strategies with k6 (atomic updates, ordered row locks, optimistic versioning, naive baseline) and used the results to pick ordered locking, which eliminated deadlocks under heavy contention.}
+        \resumeItem{Designed a three-phase payment confirmation with idempotent payment references and a reconciliation job that repairs expired and stuck holds, verified with crash tests and automated database invariant checks.}
+        \resumeItem{Streamed live seat availability to clients over Server-Sent Events backed by PostgreSQL LISTEN/NOTIFY, so every browser shows the same seat state without polling.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%-----------EDUCATION-----------
+\section{Education}
+  \resumeSubHeadingListStart
+    \resumeEducationEntry
+      {B.Tech in Computer Science}{2022 -- 2026}
+      {Graphic Era Hill University}{GPA : 7.46/10.0}
+    \resumeEducationEntry
+      {Senior Secondary (CBSE)}{2021 -- 2022}
+      {Kendriya Vidyalaya I.T.B.P. Gauchar}{75\%}
+    \resumeEducationEntry
+      {High School (CBSE)}{2019 -- 2020}
+      {Kendriya Vidyalaya I.T.B.P. Gauchar}{84.5\%}
+  \resumeSubHeadingListEnd
+
+%-----------CERTIFICATIONS AND ACHIEVEMENTS-----------
+\section{Certifications and Achievements}
+  \resumeItemListStart
+    \resumeItem{\link{https://www.udemy.com/certificate/}{\textbf{Back-End Web Development Bootcamp}, Udemy (2023)}}
+    \resumeItem{\link{https://www.udemy.com/certificate/}{\textbf{Linux Command Line Basics}, Udemy (2022)}}
+    \resumeItem{Collaborated in a 3-member team at a 24-hour university hackathon to build a backend-driven web application using Node.js and REST APIs.}
+    \resumeItem{Secured 2nd place in an Inter-School Science Quiz Competition.}
+  \resumeItemListEnd
+
+\end{document}
+
